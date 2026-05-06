@@ -1,24 +1,538 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q3W-69-Y5I">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Menú Principal-->
+        <scene sceneID="Xnz-pq-xRl">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="scs-Ij-5g4" customClass="MenuTableViewController" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5oP-cz-lNh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellMenu" textLabel="4lQ-Ll-8hk" style="IBUITableViewCellStyleDefault" id="t2p-xV-0Hd">
+                                <rect key="frame" x="0.0" y="50" width="393" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t2p-xV-0Hd" id="ZdK-1g-5ny">
+                                    <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="51"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4lQ-Ll-8hk">
+                                            <rect key="frame" x="20" y="0.0" width="334.66666666666669" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/><nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="scs-Ij-5g4" id="qAu-zb-yQJ"/>
+                            <outlet property="delegate" destination="scs-Ij-5g4" id="7DK-in-AaI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menú Principal" id="ihb-p1-zaT"/>
+                    <connections>
+                        <segue destination="Pac-VC-ID" kind="show" identifier="seguePacientes" id="s1"/>
+                        <segue destination="Doc-VC-ID" kind="show" identifier="segueDoctores" id="s2"/>
+                        <segue destination="Cit-VC-ID" kind="show" identifier="segueCitas" id="s3"/>
+                        <segue destination="Esp-VC-ID" kind="show" identifier="segueEspecialidades" id="s4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKy-pq-gDz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3509" y="87"/>
+        </scene>
+        <!--Lista de Pacientes-->
+        <scene sceneID="Pac-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="PacientesListaVC" id="Pac-VC-ID" customClass="PacientesListaVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pac-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pac-Table-ID">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pacienteCell" customClass="PacienteCell" customModule="clinica_lab07" customModuleProvider="target" rowHeight="80" id="Pac-Cell-ID">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pac-Cell-ID" id="Pac-Content-ID">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="C-Img-ID">
+                                                    <rect key="frame" x="15" y="10" width="60" height="60"/>
+                                                    <constraints><constraint firstAttribute="width" constant="60" id="CW-1"/><constraint firstAttribute="height" constant="60" id="CH-1"/></constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nombre Paciente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C-Lbl-N">
+                                                    <rect key="frame" x="90" y="15" width="283" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Ver historial médico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C-Lbl-D">
+                                                    <rect key="frame" x="90" y="41" width="283" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="C-Img-ID" firstAttribute="leading" secondItem="Pac-Content-ID" secondAttribute="leading" constant="15" id="CL-1"/>
+                                                <constraint firstItem="C-Img-ID" firstAttribute="centerY" secondItem="Pac-Content-ID" secondAttribute="centerY" id="CL-2"/>
+                                                <constraint firstItem="C-Lbl-N" firstAttribute="top" secondItem="Pac-Content-ID" secondAttribute="top" constant="15" id="CL-3"/>
+                                                <constraint firstItem="C-Lbl-N" firstAttribute="leading" secondItem="C-Img-ID" secondAttribute="trailing" constant="15" id="CL-4"/>
+                                                <constraint firstAttribute="trailing" secondItem="C-Lbl-N" secondAttribute="trailing" constant="20" id="CL-5"/>
+                                                <constraint firstItem="C-Lbl-D" firstAttribute="top" secondItem="C-Lbl-N" secondAttribute="bottom" constant="5" id="CL-6"/>
+                                                <constraint firstItem="C-Lbl-D" firstAttribute="leading" secondItem="C-Lbl-N" secondAttribute="leading" id="CL-7"/>
+                                                <constraint firstItem="C-Lbl-D" firstAttribute="trailing" secondItem="C-Lbl-N" secondAttribute="trailing" id="CL-8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgPaciente" destination="C-Img-ID" id="C-Conn-I"/>
+                                            <outlet property="lblDetalle" destination="C-Lbl-D" id="C-Conn-D"/>
+                                            <outlet property="lblNombre" destination="C-Lbl-N" id="C-Conn-N"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pac-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pac-Table-ID" firstAttribute="top" secondItem="Pac-Safe-ID" secondAttribute="top" id="c1"/>
+                            <constraint firstItem="Pac-Table-ID" firstAttribute="leading" secondItem="Pac-Safe-ID" secondAttribute="leading" id="c2"/>
+                            <constraint firstItem="Pac-Safe-ID" firstAttribute="trailing" secondItem="Pac-Table-ID" secondAttribute="trailing" id="c3"/>
+                            <constraint firstItem="Pac-Safe-ID" firstAttribute="bottom" secondItem="Pac-Table-ID" secondAttribute="bottom" id="c4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lista de Pacientes" id="Pac-Nav-ID"/>
+                    <connections>
+                        <outlet property="tableView" destination="Pac-Table-ID" id="Pac-Conn-ID"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pac-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4300" y="87"/>
+        </scene>
+        <!--Paciente DetalleVC-->
+        <scene sceneID="Det-Pac-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="PacienteDetalleVC" id="Det-Pac-VC-ID" customClass="PacienteDetalleVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Det-Pac-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Img-Pac-ID">
+                                <rect key="frame" x="76.666666666666686" y="123" width="240" height="128"/>
+                                <constraints><constraint firstAttribute="height" constant="128" id="h1"/><constraint firstAttribute="width" constant="240" id="w1"/></constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-Pac-ID">
+                                <rect key="frame" x="20" y="271" width="353" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/><nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-Pac-ID">
+                                <rect key="frame" x="20" y="315" width="353" height="483"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Det-Pac-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Txt-Pac-ID" firstAttribute="top" secondItem="Lbl-Pac-ID" secondAttribute="bottom" constant="20" id="c10"/>
+                            <constraint firstItem="Det-Pac-Safe-ID" firstAttribute="trailing" secondItem="Txt-Pac-ID" secondAttribute="trailing" constant="20" id="c11"/>
+                            <constraint firstItem="Txt-Pac-ID" firstAttribute="leading" secondItem="Det-Pac-Safe-ID" secondAttribute="leading" constant="20" id="c12"/>
+                            <constraint firstItem="Det-Pac-Safe-ID" firstAttribute="bottom" secondItem="Txt-Pac-ID" secondAttribute="bottom" constant="20" id="c13"/>
+                            <constraint firstItem="Img-Pac-ID" firstAttribute="centerX" secondItem="Det-Pac-View-ID" secondAttribute="centerX" id="c5"/>
+                            <constraint firstItem="Img-Pac-ID" firstAttribute="top" secondItem="Det-Pac-Safe-ID" secondAttribute="top" constant="20" id="c6"/>
+                            <constraint firstItem="Lbl-Pac-ID" firstAttribute="top" secondItem="Img-Pac-ID" secondAttribute="bottom" constant="20" id="c7"/>
+                            <constraint firstItem="Det-Pac-Safe-ID" firstAttribute="trailing" secondItem="Lbl-Pac-ID" secondAttribute="trailing" constant="20" id="c8"/>
+                            <constraint firstItem="Lbl-Pac-ID" firstAttribute="leading" secondItem="Det-Pac-Safe-ID" secondAttribute="leading" constant="20" id="c9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgPaciente" destination="Img-Pac-ID" id="conn-pac-img"/>
+                        <outlet property="lblNombre" destination="Lbl-Pac-ID" id="conn-pac-lbl"/>
+                        <outlet property="txtHistorial" destination="Txt-Pac-ID" id="conn-pac-txt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Det-Pac-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5100" y="87"/>
+        </scene>
+        <!--Lista de Doctores-->
+        <scene sceneID="Doc-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="DoctoresListaVC" id="Doc-VC-ID" customClass="DoctoresListaVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Doc-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Doc-Table-ID">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="doctorCell" customClass="DoctorCell" customModule="clinica_lab07" customModuleProvider="target" rowHeight="90" id="Doc-Cell-ID">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Doc-Cell-ID" id="Doc-Content-ID">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="D-Img-ID">
+                                                    <rect key="frame" x="15" y="10" width="70" height="70"/>
+                                                    <constraints><constraint firstAttribute="width" constant="70" id="DW-1"/><constraint firstAttribute="height" constant="70" id="DH-1"/></constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Dr. Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D-Lbl-N">
+                                                    <rect key="frame" x="100" y="20" width="273" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Especialidad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D-Lbl-E">
+                                                    <rect key="frame" x="100" y="46" width="273" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" systemColor="systemBlueColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D-Img-ID" firstAttribute="leading" secondItem="Doc-Content-ID" secondAttribute="leading" constant="15" id="DL-1"/>
+                                                <constraint firstItem="D-Img-ID" firstAttribute="centerY" secondItem="Doc-Content-ID" secondAttribute="centerY" id="DL-2"/>
+                                                <constraint firstItem="D-Lbl-N" firstAttribute="top" secondItem="Doc-Content-ID" secondAttribute="top" constant="20" id="DL-3"/>
+                                                <constraint firstItem="D-Lbl-N" firstAttribute="leading" secondItem="D-Img-ID" secondAttribute="trailing" constant="15" id="DL-4"/>
+                                                <constraint firstAttribute="trailing" secondItem="D-Lbl-N" secondAttribute="trailing" constant="20" id="DL-5"/>
+                                                <constraint firstItem="D-Lbl-E" firstAttribute="top" secondItem="D-Lbl-N" secondAttribute="bottom" constant="5" id="DL-6"/>
+                                                <constraint firstItem="D-Lbl-E" firstAttribute="leading" secondItem="D-Lbl-N" secondAttribute="leading" id="DL-7"/>
+                                                <constraint firstItem="D-Lbl-E" firstAttribute="trailing" secondItem="D-Lbl-N" secondAttribute="trailing" id="DL-8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgDoctor" destination="D-Img-ID" id="D-Conn-I"/>
+                                            <outlet property="lblEspecialidad" destination="D-Lbl-E" id="D-Conn-E"/>
+                                            <outlet property="lblNombre" destination="D-Lbl-N" id="D-Conn-N"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Doc-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Doc-Table-ID" firstAttribute="top" secondItem="Doc-Safe-ID" secondAttribute="top" id="c14"/>
+                            <constraint firstItem="Doc-Table-ID" firstAttribute="leading" secondItem="Doc-Safe-ID" secondAttribute="leading" id="c15"/>
+                            <constraint firstItem="Doc-Safe-ID" firstAttribute="trailing" secondItem="Doc-Table-ID" secondAttribute="trailing" id="c16"/>
+                            <constraint firstItem="Doc-Safe-ID" firstAttribute="bottom" secondItem="Doc-Table-ID" secondAttribute="bottom" id="c17"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lista de Doctores" id="Doc-Nav-ID"/>
+                    <connections>
+                        <outlet property="tableView" destination="Doc-Table-ID" id="Doc-Conn-ID"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Doc-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5900" y="87"/>
+        </scene>
+        <!--Doctor DetalleVC-->
+        <scene sceneID="Det-Doc-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="DoctorDetalleVC" id="Det-Doc-VC-ID" customClass="DoctorDetalleVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Det-Doc-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Img-Doc-ID">
+                                <rect key="frame" x="76.666666666666686" y="123" width="240" height="128"/>
+                                <constraints><constraint firstAttribute="height" constant="128" id="h2"/><constraint firstAttribute="width" constant="240" id="w2"/></constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-Doc-ID">
+                                <rect key="frame" x="20" y="271" width="353" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/><nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Especialidad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esp-Doc-ID">
+                                <rect key="frame" x="20" y="305" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/><nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-Doc-ID">
+                                <rect key="frame" x="20" y="341" width="353" height="409"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Horario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hor-Doc-ID">
+                                <rect key="frame" x="20" y="765" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <nil key="textColor"/><nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Det-Doc-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Img-Doc-ID" firstAttribute="centerX" secondItem="Det-Doc-View-ID" secondAttribute="centerX" id="c22"/>
+                            <constraint firstItem="Img-Doc-ID" firstAttribute="top" secondItem="Det-Doc-Safe-ID" secondAttribute="top" constant="20" id="c23"/>
+                            <constraint firstItem="Lbl-Doc-ID" firstAttribute="top" secondItem="Img-Doc-ID" secondAttribute="bottom" constant="20" id="c24"/>
+                            <constraint firstItem="Det-Doc-Safe-ID" firstAttribute="trailing" secondItem="Lbl-Doc-ID" secondAttribute="trailing" constant="20" id="c25"/>
+                            <constraint firstItem="Lbl-Doc-ID" firstAttribute="leading" secondItem="Det-Doc-Safe-ID" secondAttribute="leading" constant="20" id="c26"/>
+                            <constraint firstItem="Esp-Doc-ID" firstAttribute="top" secondItem="Lbl-Doc-ID" secondAttribute="bottom" constant="10" id="c27"/>
+                            <constraint firstItem="Det-Doc-Safe-ID" firstAttribute="trailing" secondItem="Esp-Doc-ID" secondAttribute="trailing" constant="20" id="c28"/>
+                            <constraint firstItem="Esp-Doc-ID" firstAttribute="leading" secondItem="Det-Doc-Safe-ID" secondAttribute="leading" constant="20" id="c29"/>
+                            <constraint firstItem="Txt-Doc-ID" firstAttribute="top" secondItem="Esp-Doc-ID" secondAttribute="bottom" constant="15" id="c30"/>
+                            <constraint firstItem="Det-Doc-Safe-ID" firstAttribute="trailing" secondItem="Txt-Doc-ID" secondAttribute="trailing" constant="20" id="c31"/>
+                            <constraint firstItem="Txt-Doc-ID" firstAttribute="leading" secondItem="Det-Doc-Safe-ID" secondAttribute="leading" constant="20" id="c32"/>
+                            <constraint firstItem="Hor-Doc-ID" firstAttribute="top" secondItem="Txt-Doc-ID" secondAttribute="bottom" constant="15" id="c33"/>
+                            <constraint firstItem="Det-Doc-Safe-ID" firstAttribute="trailing" secondItem="Hor-Doc-ID" secondAttribute="trailing" constant="20" id="c34"/>
+                            <constraint firstItem="Hor-Doc-ID" firstAttribute="leading" secondItem="Det-Doc-Safe-ID" secondAttribute="leading" constant="20" id="c35"/>
+                            <constraint firstItem="Det-Doc-Safe-ID" firstAttribute="bottom" secondItem="Hor-Doc-ID" secondAttribute="bottom" constant="20" id="c36"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgDoctor" destination="Img-Doc-ID" id="conn-doc-img"/>
+                        <outlet property="lblNombre" destination="Lbl-Doc-ID" id="conn-doc-lbl"/>
+                        <outlet property="lblEspecialidad" destination="Esp-Doc-ID" id="conn-doc-esp"/>
+                        <outlet property="txtBiografia" destination="Txt-Doc-ID" id="conn-doc-txt"/>
+                        <outlet property="lblHorario" destination="Hor-Doc-ID" id="conn-doc-hor"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Det-Doc-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6300" y="800"/>
+        </scene>
+        <!--Lista de Citas-->
+        <scene sceneID="Cit-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="CitasListaVC" id="Cit-VC-ID" customClass="CitasListaVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cit-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cit-Table-ID">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="citaCell" customClass="CitaCell" customModule="clinica_lab07" customModuleProvider="target" rowHeight="100" id="Cit-Cell-ID">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cit-Cell-ID" id="Cit-Content-ID">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C-Color-V">
+                                                    <rect key="frame" x="15" y="15" width="10" height="70"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <constraints><constraint firstAttribute="width" constant="10" id="CW-2"/></constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Paciente: Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C-Lbl-P">
+                                                    <rect key="frame" x="40" y="15" width="333" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Fecha y Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C-Lbl-FH">
+                                                    <rect key="frame" x="40" y="41" width="333" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Estado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C-Lbl-ES">
+                                                    <rect key="frame" x="40" y="64" width="333" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="textColor" systemColor="systemGreenColor"/><nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="C-Color-V" firstAttribute="leading" secondItem="Cit-Content-ID" secondAttribute="leading" constant="15" id="CL-10"/>
+                                                <constraint firstItem="C-Color-V" firstAttribute="top" secondItem="Cit-Content-ID" secondAttribute="top" constant="15" id="CL-11"/>
+                                                <constraint firstAttribute="bottom" secondItem="C-Color-V" secondAttribute="bottom" constant="15" id="CL-12"/>
+                                                <constraint firstItem="C-Lbl-P" firstAttribute="top" secondItem="C-Color-V" secondAttribute="top" id="CL-13"/>
+                                                <constraint firstItem="C-Lbl-P" firstAttribute="leading" secondItem="C-Color-V" secondAttribute="trailing" constant="15" id="CL-14"/>
+                                                <constraint firstAttribute="trailing" secondItem="C-Lbl-P" secondAttribute="trailing" constant="20" id="CL-15"/>
+                                                <constraint firstItem="C-Lbl-FH" firstAttribute="top" secondItem="C-Lbl-P" secondAttribute="bottom" constant="5" id="CL-16"/>
+                                                <constraint firstItem="C-Lbl-FH" firstAttribute="leading" secondItem="C-Lbl-P" secondAttribute="leading" id="CL-17"/>
+                                                <constraint firstItem="C-Lbl-FH" firstAttribute="trailing" secondItem="C-Lbl-P" secondAttribute="trailing" id="CL-18"/>
+                                                <constraint firstItem="C-Lbl-ES" firstAttribute="top" secondItem="C-Lbl-FH" secondAttribute="bottom" constant="5" id="CL-19"/>
+                                                <constraint firstItem="C-Lbl-ES" firstAttribute="leading" secondItem="C-Lbl-FH" secondAttribute="leading" id="CL-20"/>
+                                                <constraint firstItem="C-Lbl-ES" firstAttribute="trailing" secondItem="C-Lbl-FH" secondAttribute="trailing" id="CL-21"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblEstado" destination="C-Lbl-ES" id="C-Conn-ES"/>
+                                            <outlet property="lblFechaHora" destination="C-Lbl-FH" id="C-Conn-FH"/>
+                                            <outlet property="lblPaciente" destination="C-Lbl-P" id="C-Conn-P"/>
+                                            <outlet property="viewEstadoColor" destination="C-Color-V" id="C-Conn-V"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Cit-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cit-Table-ID" firstAttribute="top" secondItem="Cit-Safe-ID" secondAttribute="top" id="c18"/>
+                            <constraint firstItem="Cit-Table-ID" firstAttribute="leading" secondItem="Cit-Safe-ID" secondAttribute="leading" id="c19"/>
+                            <constraint firstItem="Cit-Safe-ID" firstAttribute="trailing" secondItem="Cit-Table-ID" secondAttribute="trailing" id="c20"/>
+                            <constraint firstItem="Cit-Safe-ID" firstAttribute="bottom" secondItem="Cit-Table-ID" secondAttribute="bottom" id="c21"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Cit-Table-ID" id="Cit-Conn-ID"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cit-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6700" y="87"/>
+        </scene>
+        <!--Cita DetalleVC-->
+        <scene sceneID="Det-Cit-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="CitaDetalleVC" id="Det-Cit-VC-ID" customClass="CitaDetalleVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Det-Cit-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Stk-Cit-ID">
+                                <rect key="frame" x="20" y="123" width="353" height="142"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Fecha y Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cit-FH-ID"><rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/><fontDescription key="fontDescription" type="system" pointSize="17"/></label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Paciente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cit-P-ID"><rect key="frame" x="0.0" y="40.333333333333343" width="353" height="20.333333333333332"/><fontDescription key="fontDescription" type="system" pointSize="17"/></label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Doctor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cit-D-ID"><rect key="frame" x="0.0" y="80.666666666666657" width="353" height="20.333333333333332"/><fontDescription key="fontDescription" type="system" pointSize="17"/></label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Estado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cit-E-ID"><rect key="frame" x="0.0" y="121" width="353" height="20.333333333333332"/><fontDescription key="fontDescription" type="boldSystem" pointSize="17"/></label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Det-Cit-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Stk-Cit-ID" firstAttribute="top" secondItem="Det-Cit-Safe-ID" secondAttribute="top" constant="20" id="c37"/>
+                            <constraint firstItem="Det-Cit-Safe-ID" firstAttribute="trailing" secondItem="Stk-Cit-ID" secondAttribute="trailing" constant="20" id="c38"/>
+                            <constraint firstItem="Stk-Cit-ID" firstAttribute="leading" secondItem="Det-Cit-Safe-ID" secondAttribute="leading" constant="20" id="c39"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblFechaHora" destination="Cit-FH-ID" id="conn-cit-fh"/>
+                        <outlet property="lblPaciente" destination="Cit-P-ID" id="conn-cit-p"/>
+                        <outlet property="lblDoctor" destination="Cit-D-ID" id="conn-cit-d"/>
+                        <outlet property="lblEstado" destination="Cit-E-ID" id="conn-cit-e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Det-Cit-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7100" y="800"/>
+        </scene>
+        <!--Especialidades-->
+        <scene sceneID="Esp-Scene-ID">
+            <objects>
+                <tableViewController storyboardIdentifier="EspecialidadesTableVC" id="Esp-VC-ID" customClass="EspecialidadesTableVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Esp-Table-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="especialidadCell" textLabel="Esp-L" style="IBUITableViewCellStyleSubtitle" id="Esp-C">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esp-C" id="Esp-Cnt">
+                                    <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews><label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Esp-L"><rect key="frame" x="20" y="0.0" width="334.66666666666669" height="43.666667938232422"/><autoresizingMask key="autoresizingMask"/></label></subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Especialidades" id="Esp-Nav-ID"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esp-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7500" y="87"/>
+        </scene>
+        <!--Especialidad DetalleVC-->
+        <scene sceneID="Det-Esp-Scene-ID">
+            <objects>
+                <viewController storyboardIdentifier="EspecialidadDetalleVC" id="Det-Esp-VC-ID" customClass="EspecialidadDetalleVC" customModule="clinica_lab07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Det-Esp-View-ID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nombre Especialidad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-Esp-N">
+                                <rect key="frame" x="20" y="123" width="353" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/><nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-Esp-D">
+                                <rect key="frame" x="20" y="173" width="353" height="625"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Det-Esp-Safe-ID"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Det-Esp-Safe-ID" firstAttribute="trailing" secondItem="Lbl-Esp-N" secondAttribute="trailing" constant="20" id="c40"/>
+                            <constraint firstItem="Lbl-Esp-N" firstAttribute="leading" secondItem="Det-Esp-Safe-ID" secondAttribute="leading" constant="20" id="c41"/>
+                            <constraint firstItem="Lbl-Esp-N" firstAttribute="top" secondItem="Det-Esp-Safe-ID" secondAttribute="top" constant="20" id="c42"/>
+                            <constraint firstItem="Txt-Esp-D" firstAttribute="top" secondItem="Lbl-Esp-N" secondAttribute="bottom" constant="20" id="c43"/>
+                            <constraint firstItem="Det-Esp-Safe-ID" firstAttribute="trailing" secondItem="Txt-Esp-D" secondAttribute="trailing" constant="20" id="c44"/>
+                            <constraint firstItem="Txt-Esp-D" firstAttribute="leading" secondItem="Det-Esp-Safe-ID" secondAttribute="leading" constant="20" id="c45"/>
+                            <constraint firstItem="Det-Esp-Safe-ID" firstAttribute="bottom" secondItem="Txt-Esp-D" secondAttribute="bottom" constant="20" id="c46"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblNombre" destination="Lbl-Esp-N" id="conn13"/>
+                        <outlet property="txtDescripcion" destination="Txt-Esp-D" id="conn14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Det-Esp-Place-ID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7900" y="800"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9nm-mK-1Wf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3W-69-Y5I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tgg-hf-Hn3">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="scs-Ij-5g4" kind="relationship" relationship="rootViewController" id="ebQ-sh-wtZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QZY-0G-Wiv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2582" y="87"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
